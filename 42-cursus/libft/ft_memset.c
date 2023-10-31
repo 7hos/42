@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:30:32 by thossain          #+#    #+#             */
-/*   Updated: 2023/10/30 17:00:16 by thossain         ###   ########.fr       */
+/*   Created: 2023/10/31 17:54:58 by thossain          #+#    #+#             */
+/*   Updated: 2023/10/31 18:32:46 by thossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
- * #include <stdio.h>
-*/
+ * The C library function void *memset(void *str, int c, size_t n)
+ * copies the character c (an unsigned char) to the first n characters of the
+ * string pointed to, by the argument str.
+ */
+
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_memset(void *str, int c, size_t n)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-	{
-		return (1);
-	}
-	return (0);
-}
-/*
-int	main(void)
-{
-	char	c;
 
-	c = 'a';
-	printf("%d", ft_isalpha(c));
-	return (0);
 }
-*/
