@@ -6,7 +6,7 @@
 #    By: thossain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/15 19:22:52 by thossain          #+#    #+#              #
-#    Updated: 2023/11/15 20:53:03 by thossain         ###   ########.fr        #
+#    Updated: 2023/11/21 21:59:42 by thossain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 #CC is the compiler command.
@@ -39,9 +39,13 @@ SRC = ft_atoi.c \
       ft_memset.c \
       ft_strlen.c \
       ft_tolower.c \
-      ft_calloc.c\
-      ft_strdup.c\
-      ft_substr.c\
+      ft_calloc.c \
+      ft_strdup.c \
+      ft_substr.c \
+      ft_strjoin.c \
+      ft_strtrim.c \
+      ft_split.c \
+      ft_itoa.c \
 
 OBJ = $(SRC:.c=.o)
 
