@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 18:54:11 by thossain          #+#    #+#             */
-/*   Updated: 2023/12/07 19:27:30 by thossain         ###   ########.fr       */
+/*   Created: 2023/12/21 20:19:09 by thossain          #+#    #+#             */
+/*   Updated: 2023/12/21 20:19:16 by thossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-// Standard C Libraries
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-// Protoypes
-void    ft_print_char(char c);
-int	ft_print_str(char *str);
+void	ft_print_char(char c)
+{
+	write(1, &c, 1);
+}
+/*
+int main()
+{	char test;
 
-#endif
+	test = 'F';
+    ft_print_char(test);
+	printf("%c\n", test); 
+}
+*/

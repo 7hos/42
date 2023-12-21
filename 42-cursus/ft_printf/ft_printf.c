@@ -6,7 +6,7 @@
 /*   By: thossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:26:33 by thossain          #+#    #+#             */
-/*   Updated: 2023/12/13 20:54:00 by thossain         ###   ########.fr       */
+/*   Updated: 2023/12/18 23:11:44 by thossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdarg.h>
@@ -24,25 +24,6 @@
 ✘ • %X Prints a number in hexadecimal (base 16) uppercase format.
 ✘ • %% Prints a percent sign.
 */
-int	print_char(int c)
-{
-	return (write(1, &c, 1));
-}
-
-int	print_str(char *str)
-{
-	int	count;
-
-	count = 0;
-	while (*str != '\0')
-	{
-		print_char((int)*str);
-		++count;
-		++str;
-	}
-	return (count);
-}
-
 int	print_digit(long n, int base)
 {
 	int		count;
@@ -56,7 +37,7 @@ int	print_digit(long n, int base)
 	}
 	else if (n < base)
 	{
-		return (print_char(symbols[n]));
+		return (ft_print_char(symbols[n]));
 	}
 	else
 	{
@@ -71,9 +52,9 @@ int	print_format(char specifier, va_list ap)
 
 	count = 0;
 	if (specifier == 'c')
-		count += print_char(va_arg(ap, int));
+		count += ft_print_char(va_arg(ap, int));
 	else if (specifier == 's')
-		count += print_str(va_arg(ap, char *));
+		count += ft_print_str(va_arg(ap, char *));
 	else if (specifier == 'd')
 		count += print_digit((long)(va_arg(ap, int)), 10);
 	else if (specifier == 'x')
@@ -106,11 +87,15 @@ int main()
 {
     int count;
 
-    //count = ft_printf("Hello %s\n", "John");
-    //ft_printf("The chars written are %d\n", count);
+    count = ft_printf("Hello %s\n", "John");
+    ft_printf("The chars written are %d\n", count);
     count = ft_printf("%x\n", 42);
     ft_printf("The chars written are %d\n", count);
     count = printf("%x\n", 42);
     printf("The chars written are %d\n", count);
+	int var = -1;
+	int *ptr = &var;
+	printf("The address in decimal : %d \n", *ptr); 
+    printf("The address in hexadecimal : %p \n", ptr); 
 }
 */
