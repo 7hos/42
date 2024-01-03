@@ -11,16 +11,20 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_print_str(char *str)
+void	ft_string(char *args, int *length)
 {
-	int	count;
+	size_t	i;
 
-	count = 0;
-	while (*str != '\0')
+	i = 0;
+	if (!args)
 	{
-		ft_print_char((int)*str);
-		++count;
-		++str;
+		write(1, "(null)", 6);
+		(*length) += 6;
+		return ;
 	}
-	return (count);
+	while (args[i] != '\0')
+	{
+		ft_putcharacter_length(args[i], length);
+		i++;
+	}
 }

@@ -11,16 +11,22 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_print_char(char c)
+void	ft_putcharacter_length(char character, int *length)
 {
-	write(1, &c, 1);
+	write(1, &character, 1);
+	(*length)++;
 }
 /*
 int main()
-{	char test;
+{
+    int length_counter = 0;
 
-	test = 'F';
-    ft_print_char(test);
-	printf("%c\n", test); 
+    ft_putcharacter_length('A', &length_counter);
+    ft_putcharacter_length('B', &length_counter);
+    ft_putcharacter_length('C', &length_counter);
+
+    printf("Length: %d\n", length_counter);
+
+    return 0;
 }
 */

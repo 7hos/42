@@ -10,3 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+
+void	ft_unsigned_int(unsigned int u, int *length)
+{
+	if (u >= 10)
+		ft_unsigned_int(u / 10, length);
+	ft_putcharacter_length(u % 10 + '0', length);
+}
