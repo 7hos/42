@@ -19,10 +19,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 #SRC is the list of source files.
 SRC = ft_print_char.c \
-	ft_print_dec_nbr.c \
 	ft_print_hex.c \
-	ft_print_int.c \
-	ft_print_percent_sign.c \
+	ft_print_number.c \
 	ft_print_ptr.c \
 	ft_print_str.c \
 	ft_print_unsigned.c \

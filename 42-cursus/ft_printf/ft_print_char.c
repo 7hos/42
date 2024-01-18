@@ -16,17 +16,3 @@ void	ft_putcharacter_length(char character, int *length)
 	write(1, &character, 1);
 	(*length)++;
 }
-/*
-int main()
-{
-    int length_counter = 0;
-
-    ft_putcharacter_length('A', &length_counter);
-    ft_putcharacter_length('B', &length_counter);
-    ft_putcharacter_length('C', &length_counter);
-
-    printf("Length: %d\n", length_counter);
-
-    return 0;
-}
-*/
