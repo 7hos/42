@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "ft_printf.h"
 /* ✘ ✓
 ✓ • %c Prints a single character.
 ✓ • %s Prints a string (as defined by the common C convention).
@@ -29,7 +30,7 @@ static void	ft_printf_checker(char s, va_list *args, int *len, int *i)
 	if (s == 's')
 		ft_string(va_arg(*args, char *), len);
 	else if (s == 'd' || s == 'i')
-		ft_number(va_arg(*args, int), len);
+		ft_print_number(va_arg(*args, int), len);
 	else if (s == 'u')
 		ft_unsigned_int(va_arg(*args, unsigned int), len);
 	else if (s == 'x')
