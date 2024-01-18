@@ -38,7 +38,7 @@ static void	ft_printf_checker(char s, va_list *args, int *len, int *i)
 	else if (s == 'X')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
 	else if (s == 'p')
-		ft_pointer(va_arg(*args, size_t), len);
+		ft_pointer(va_arg(*args, unsigned long), len);
 	else if (s == 'c')
 		ft_putcharacter_length(va_arg(*args, int), len);
 	else if (s == '%')

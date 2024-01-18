@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_pointer(size_t pointer, int *length)
+void	ft_pointer(unsigned long pointer, int *length)
 {
 	char	string[25];
 	int		i;
@@ -19,13 +19,12 @@ void	ft_pointer(size_t pointer, int *length)
 
 	base_character = "0123456789abcdef";
 	i = 0;
-	write(1, "0x", 2);
-	(*length) += 2;
 	if (pointer == 0)
 	{
-		ft_putcharacter_length('0', length);
+		ft_string("(nil)", length);
 		return ;
 	}
+	ft_string("0x", length);
 	while (pointer != 0)
 	{
 		string[i] = base_character[pointer % 16];
