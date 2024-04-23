@@ -1,0 +1,336 @@
+Born2beroot
+
+Check signature :
+
+sha1sum
+
+
+
+___Project Overview___
+
+A virtual machine (VM) is a software emulation of a physical computer system. It allows you to run multiple operating systems and applications on a single physical machine, enabling greater efficiency in resource utilization and flexibility in managing computing environments.
+
+Virtual machine and its benefits.
+
+Virtual Hardware
+Hypervisor | A hypervisor allows one host computer to support multiple guest VMs by virtually sharing its resources, such as memory and processing.
+Guest Operating System
+Resource Allocation
+Isolation.
+
+Benefits
+
+Multiple Environments on single hardware
+Isolation and Security
+Flexibility and Scalability
+Hardware Independence
+Testing and Development
+
+Rocky vs Debian
+
+Rocky
+
+Community Enterprise OS maintained by RedHat
+Use the Red Hat Package manager
+Focus on stability and not on the latest.
+Enterprise
+Highly testes
+Ideal for the server side
+
+Debian
+
+One of the oldest stable Linux distribution
+Wide range of free software
+Uses APT and dpkg for package management
+Strong community support
+Extensive documentation
+Perfect for server and production
+
+1. APT (Advanced Package Tool):
+   - APT is a package management system used primarily by Debian-based Linux distributions like Ubuntu.
+command-line interface CLI only
+   - It manages software installation, upgrades, and removals, handling dependencies and ensuring system integrity.
+   - APT works with repositories containing software packages, fetching and installing them as needed.
+
+2. Aptitude:
+   - Aptitude is a front-end package manager for APT, offering a command-line interface(CLI) and text-based graphical user interface(TUI) similar to APT.
+   - It provides more advanced features for package management, such as dependency resolution, package selection, and conflict resolution.
+   - Aptitude offers on an interactive mode for browsing, searching, filtering and managing packages, making it popular among power users and system administrators.
+
+3. AppArmor (Application Armor):
+   - AppArmor is a Linux security module that restricts programs' capabilities using security profiles.
+   - It confines individual programs to a set of rules, limiting their access to certain resources and actions.
+   - AppArmor enhances system security by reducing the potential damage caused by compromised applications.
+MAC implementation.
+Profile used to determine access to the file
+
+
+___Simple Configuration___
+
+
+Purpose of the Password Policy
+Protect unauthorised access.
+Prevention of Brute Force Attacks
+Regular Password Change
+Minimising Repeat Usage
+
+Advantages
+Increased System Protection
+Compliance with best practices
+User Vigilance
+Prevention of Data Breaches
+
+Disadvantages
+
+User Inconvenience
+Risk of Forgotten Passwords
+False Sense of Security
+
+Check OS
+-> cat /etc/os-release | uname -a
+
+UFW status
+-> sudo systemctl status ufw
+
+SSH status
+-> sudo systemctl status ssh
+
+
+
+
+___User___
+
+
+User belong to SUDO
+
+-> getent group sudo
+
+User belong to USER42
+
+-> getent group user42
+
+Password policy check
+
+Create new user
+
+-> sudo adduser new_username
+
+Assign a password
+
+-> getent group sudo
+
+Check if the group has been created
+
+-> getent group
+
+Change Password
+
+-> passwd
+
+Password Policy
+
+-> sudo vim /etc/login.defs
+
+Pluggable Authentication Modules (PAM) system, which manages auth
+
+-> sudo vim /etc/pam.d/common-password
+
+Create new group
+
+-> sudo groupadd group_name[evaluating]
+
+Assign a group to a user
+
+-> sudo usermod -aG evaluating [group_name] thossain2 [new_username]
+
+Check if the new user belongs to the "evaluating" group
+
+-> getent group evaluating [group_name]
+
+
+
+___Hostname and Partitions____
+
+
+
+Host Name
+
+-> hostnamectl
+
+Modify Host Name 
+
+-> sudo hostnamectl set-hostname new_hostname 
+-> vim /etc/hosts 
+-> sudo reboot
+
+Restore Host Name
+
+-> sudo hostnamectl set-hostname new_hostname
+-> sudo reboot
+ 
+View Partition
+
+-> lsblk
+
+LVM (Logical Volume Management) advanced method of managing storage space on a Linux system. It provides a higher level of abstraction over physical storage devices, allowing for a more flexible and convenient way to manage disk space than traditional partitioning methods.
+
+Physical Volumes (PVs)
+Volume Groups (VGs)
+Logical Volumes (LVs)
+Filesystems
+
+Benefits
+Flexibility
+Easier Management
+Snapshots
+Dynamic Resizing
+Striping and Mirroring
+
+Practical Uses
+Server Environments
+Desktops for Advanced Users
+Data centres
+
+
+___SUDO___
+
+
+Check if Sudo is Installed
+
+-> dpkg -l | grep sudo or sudo -v
+
+New User Assigned to Sudo Group
+
+-> sudo usermod -aG sudo [new_user]
+
+-> sudo visudo
+
+Log File Path
+
+Defaults    logfile="/var/log/sudo/sudo.log"
+
+TTY(TeleTYpewriter) Requirement
+
+Defaults    requiretty
+
+Restricted Paths
+
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+
+
+
+___UFW / Firewalled___
+
+
+UFW (Uncomplicated Firewall) is a user-friendly interface for managing Netfilter, the default firewall configuration tool for Linux. UFW simplifies the process of configuring a firewall, making it more accessible to users who may not be familiar with complex firewall settings.
+
+Verify UFW(Uncomplicated Firewall) is installed
+
+-> sudo ufw status
+
+Rule-Based Management | Network traffic allowed or denied
+Easy Syntax | an easy-to-use command-line interface for creating and managing these rules. 
+Default Policies | Set default policies for incoming and outgoing traffic.
+Port Management | Open or close specific network ports.
+Logging | useful monitoring and troubleshooting 
+
+
+List the active rules in UFW. A rule must exist for port 4242.
+
+-> sudo ufw status numbered
+
+Add a new rule to open port 8080. Check that this one has been added by listing the active rules.
+
+-> sudo ufw allow 8080
+
+Delete this new rule with the help of the student being evaluated.
+
+-> sudo ufw status numbered
+-> sudo ufw delete 4
+-> sudo ufw delete 2
+
+
+___SSH___
+
+
+SSH (Secure Shell), is a network protocol that provides a secure method for logging into a networked device remotely. It is widely used for securely accessing and managing systems over an unsecured network, like the Internet.
+
+To Restart
+
+-> sudo systemctl restart ssh
+
+Check if it's active 
+
+-> sudo service sshd status
+
+Basic Functionality of SSH
+
+Remote Access 
+Encryption 
+Authentication 
+Port Forwarding
+Secure File Transfer
+
+Check the port settings are right
+
+-> sudo grep Port /etc/ssh/sshd_config 
+
+___Script Monitoring___
+
+
+-> cd /usr/local/bin
+
+-> vim monitoring.sh
+
+What is Cron?
+
+Cron is a time-based job scheduler in Unix-like operating systems. It allows users to schedule commands or scripts to run periodically at fixed time intervals or specified times. Cron jobs are often used for automating repetitive tasks such as backups, system maintenance, and regular report generation.
+
+Set up script execute every 10 minutes
+
+-> sudo crontab -u root -e
+-> sudo cronstop
+-> sudo cronstart
+
+-> sudo reboot
+-> sudo crontab -u root -e
+
+Show monitoring.sh
+
+-> cd /usr/local/bin
+
+Edit the Cron job
+
+-> sudo crontab -u root -e
+
+Change to run every 30s 
+
+-> change script to */1 * * * * sleep 30s && script path
+
+
+Disable cron
+
+-> sudo systemctl disable corn
+
+Syntax
+
+-> sudo ufw status
+-> sudo systemctl status ssh
+-> getent group sudo
+-> getent group user42
+-> sudo adduser new username
+-> sudo groupadd groupname
+-> sudo usermod -aG groupname username
+-> sudo chage -l username - check password expire rules
+-> hostnamectl
+-> hostnamectl set-hostname new_hostname - to change the current hostname
+-> sudo reboot - Restart your Virtual Machine.
+-> sudo nano /etc/hosts - change current hostname to new hostname
+-> lsblk to display the partitions
+-> dpkg -l | grep sudo – to show that sudo is installed
+-> sudo ufw status numbered
+-> sudo ufw allow port-id
+-> sudo ufw delete rule number
+-> ssh your_user_id@127.0.0.1 -p 4242 - do this in terminal to show that SSH to port 4242 is working
+

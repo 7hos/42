@@ -12,6 +12,9 @@
 
 #include "get_next_line.h"
 
+/*  - Reads the file descriptor (fd) and appends the content to the existing result (res) string.
+    - Continues reading until it reaches the end of file or encounters a newline character.
+    - Frees the temporary buffer used for reading.*/
 char	*read_file(int fd, char *res)
 {
 	char	*buffer;
@@ -38,6 +41,9 @@ char	*read_file(int fd, char *res)
 	return (res);
 }
 
+/*  - Finds the length of the first line in the ¨buffer¨.
+    - Allocates memory for a new string (¨line¨) and copies the first line into it.
+    - If the first line ends with '\0' or '\n', replaces the last character with '\n'.*/
 char	*ft_line(char *buffer)
 {
 	char	*line;
@@ -60,6 +66,8 @@ char	*ft_line(char *buffer)
 	return (line);
 }
 
+/*  - Takes two strings (¨buffer¨ and ¨buf¨), concatenates them using ¨ft_strjoin¨.
+    - Frees the original ¨buffer¨ and returns the newly joined string.*/
 char	*ft_free(char *buffer, char *buf)
 {
 	char	*temp;
@@ -69,6 +77,10 @@ char	*ft_free(char *buffer, char *buf)
 	return (temp);
 }
 
+/*
+    - Finds the length of the first line in the buffer.
+    - Allocates memory for a new string (line) containing the remaining content after the first line.
+    - Frees the original buffer.*/
 char	*ft_next(char *buffer)
 {
 	int		i;
@@ -92,6 +104,10 @@ char	*ft_next(char *buffer)
 	return (line);
 }
 
+/*  - Maintains a static variable ¨buffer¨ to store the remaining content from the previous reads.
+    - Calls ¨read_file¨ to read from the file descriptor and concatenate the content to buffer.
+    - Calls ¨ft_line¨ to extract the first line and returns it.
+    - Updates ¨buffer¨ to store the remaining content after the first line.*/
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
